@@ -5,7 +5,8 @@
 
 using namespace std;
 
-void myFunction(vector<int> &);
+void BubbleSort(vector<int> &);
+void findLargestMult(vector<int> &);
 
 int main() {
     vector<int> numList;
@@ -19,15 +20,15 @@ int main() {
         numList.push_back(userNumber);
     }
     //start
-    myFunction(numList);
+    BubbleSort(numList);
+    findLargestMult(numList);
+
     //end
-    for(int i = 0; i < 10; i++){
-        cout << numList[i] << " ";
-    }
+
 }
 
 
-void myFunction (vector<int> &theList) {
+void BubbleSort (vector<int> &theList) {
 
     bool swapped = true;
 
@@ -39,11 +40,22 @@ void myFunction (vector<int> &theList) {
                 theList[t] = theList[t-1];
                 theList[t-1] = temp;
                 swapped = true;
-                for(int i = 0;i < 20;i++){
-                    cout << theList[i] << " ";
-                }
-                cout << endl;
             }
         }
     }
 }
+
+void findLargestMult (vector<int> &theList) {
+
+    int Largest;
+    Largest = theList[theList.size() - 1];
+    cout << "largest #: " << Largest << endl;
+
+    for(auto num: theList){
+        num = num * Largest;
+        cout << num << " ";
+    }
+}
+
+
+
