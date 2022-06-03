@@ -2,11 +2,11 @@
 //#include<random>
 //#include<time.h>
 #include<vector>
+#include<math.h>
 
 using namespace std;
 
 void BubbleSort(vector<int> &);
-void findLargestMult(vector<int> &);
 void PosNegDivider(vector<int> &, vector<int> &, vector<int> &);
 
 int main() {
@@ -14,6 +14,12 @@ int main() {
     vector<int> numList;
     vector<int> posList;
     vector<int> negList;
+
+    int LargestN;
+    int secLargestN;
+
+    int LargestP;
+    int secLargestP;
 
     int userNumber;
 
@@ -27,7 +33,6 @@ int main() {
     //start
 
 
-    //findLargestMult(numList);
 
     PosNegDivider(numList, negList, posList);
 
@@ -37,14 +42,31 @@ int main() {
 
 
 
+    LargestP = posList[posList.size() - 1];
+    secLargestP = posList[posList.size() - 2];
 
-    //end
-    for(auto num: negList){
-        cout << num << " ";
-    }
-    cout << " " << endl;
-    for(auto num: posList){
-        cout << num << " ";
+    LargestN = negList[0];
+    secLargestN = negList[1];
+
+
+    cout << "2 Largest +'s: " << LargestP << " & " << secLargestP << endl;
+    cout << "2 Largest -'s: " << LargestN << " & " << secLargestN << endl;
+
+
+
+    if(LargestP * secLargestP > abs(LargestN) * abs(secLargestN)) {
+
+        cout << LargestP << " * " << secLargestP << " = " << LargestP * secLargestP << endl;
+
+    } else if(LargestP * secLargestP < abs(LargestN) * abs(secLargestN)) {
+
+        cout << LargestN << " * " << secLargestN << " = " << LargestN << secLargestN << endl;
+
+    } else if(LargestP * secLargestP == abs(LargestN) * abs(secLargestN)){
+
+        cout << LargestN << " * " << secLargestN << " = " << LargestN << secLargestN << endl;
+
+        cout << LargestP << " * " << secLargestP << " = " << LargestP * secLargestP << endl;
     }
 }
 
@@ -66,20 +88,7 @@ void BubbleSort (vector<int> &theList) {
     }
 }
 
-void findLargestMult (vector<int> &NegativeList, vector<int> &PositiveList) {
 
-    int LargestN;
-    int secLargestN;
-
-    int LargestP;
-    int secLargestP;
-
-    LargestP = PositiveList[PositiveList.size()];
-    secLargestP = PositiveList[PositiveList.size() - 1];
-
-    LargestN = NegativeList[0];
-
-}
 
 void PosNegDivider (vector<int> &InputList, vector<int> &NegativeList, vector<int> &PositiveList) {
     for(auto num: InputList){
