@@ -7,6 +7,7 @@ using namespace std;
 
 void BubbleSort(vector<int> &);
 void findLargestMult(vector<int> &);
+void PosNegDivider(vector<int> &, vector<int> &, vector<int> &);
 
 int main() {
 
@@ -24,11 +25,27 @@ int main() {
         numList.push_back(userNumber);
     }
     //start
-    BubbleSort(numList);
-    findLargestMult(numList);
+
+
+    //findLargestMult(numList);
+
+    PosNegDivider(numList, negList, posList);
+
+    BubbleSort(negList);
+
+    BubbleSort(posList);
+
+
+
 
     //end
-
+    for(auto num: negList){
+        cout << num << " ";
+    }
+    cout << " " << endl;
+    for(auto num: posList){
+        cout << num << " ";
+    }
 }
 
 
@@ -49,21 +66,29 @@ void BubbleSort (vector<int> &theList) {
     }
 }
 
-void findLargestMult (vector<int> &theList) {
+void findLargestMult (vector<int> &NegativeList, vector<int> &PositiveList) {
 
-    int Largest;
-    Largest = theList[theList.size() - 1];
-    cout << "largest #: " << Largest << endl;
+    int LargestN;
+    int secLargestN;
 
-    for(auto num: theList){
-        num = num * Largest;
-        cout << num << " ";
-    }
+    int LargestP;
+    int secLargestP;
+
+    LargestP = PositiveList[PositiveList.size()];
+    secLargestP = PositiveList[PositiveList.size() - 1];
+
+    LargestN = NegativeList[0];
+
 }
 
-void PosNegDivider (vector<int> &theList) {
-
-
+void PosNegDivider (vector<int> &InputList, vector<int> &NegativeList, vector<int> &PositiveList) {
+    for(auto num: InputList){
+        if(num < 0){
+            NegativeList.push_back(num);
+        } else if(num > 0){
+            PositiveList.push_back(num);
+        }
+    }
 }
 
 
