@@ -20,32 +20,30 @@ int main() {
     int Rvalue = 1000;
 
     for(int i = 0; i < 10; i++){
-
         cout << "enter a number('101' to stop): ";
         cin >> userNumber;
-
         if(userNumber == 101){
             break;
         }
-
         numList.push_back(userNumber);
     }
 
     BubbleSort(numList);
 
-    for(int i = numList.size(); i > 0; i--) {
 
-        Hnumber = numList[i];
-        Lnumber = numList[i - 1];
+    for(int i = numList.size(); i > 1; i--) {
+
+        Hnumber = numList[i - 1];
+        Lnumber = numList[i - 2];
 
         if(Hnumber - Lnumber < Rvalue) {
 
             FHnumber = Hnumber;
             FLnumber = Lnumber;
-            Rvalue = Hnumber - Lnumber;
-
+            Rvalue = FHnumber - FLnumber;
         }
     }
+
 
     cout << "difference between " << FHnumber << " & " << FLnumber << " is: " << Rvalue << endl;
 
